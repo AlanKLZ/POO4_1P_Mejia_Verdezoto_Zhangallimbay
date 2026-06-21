@@ -1,4 +1,4 @@
 public enum RolUsuario {
     AFICIONADO,
-    ORGANIZADOR
+    ORGANIZADOR,
 }
