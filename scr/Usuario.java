@@ -39,7 +39,3 @@ abstract class Usuario{
 
 }
 
-public enum RolUsuario{
-    AFICIONADO,
-    ORGANIZADOR
-}
