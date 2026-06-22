@@ -68,9 +68,8 @@ abstract class Usuario{
         this.correo = correo;
         this.rol = rol;
     }
-    public static void consultarEntradas(){
-
-    }
+    public abstract void consultarEntradas();
+    
     @Override
     public String toString(){
         return "Usuario";
