@@ -1,4 +1,4 @@
-import java.util.ArraysList;
+import java.util.ArrayList;
 
 abstract class Usuario{
     protected String codigoUnico;
@@ -70,7 +70,7 @@ abstract class Usuario{
         this.correo = correo;
         this.rol = rol;
     }
-    public abstract void consultarEntradas(ArrayList<Compras> compras);
+    public abstract void consultarEntradas(ArrayList<Compra> compras);
     
     @Override
     public String toString(){
