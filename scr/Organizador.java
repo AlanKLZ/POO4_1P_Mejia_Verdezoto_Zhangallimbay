@@ -29,11 +29,32 @@ public class Organizador extends Usuario{
     //consultar entradas 
     @Override 
     public void consultarEntradas(ArrayList <Compra> compras){
-        System.out.println("Entradas registradas en el sistema"); 
-        for(Compra c : compras){
-            
+        if (compras.isEmpty()){
+            System.out.println("No hay compras registradas en el sistema"); 
+        }else{
+            System.out.println("Entradas registradas en el sistema"); 
+            for(Compra c : compras){
+                System.out.println(c.toString()); 
+            } 
         }
     }
-
+    //generar reporte de ventas 
+    public void generarReporte(ArrayList<Compra> compras){
+        int totalCompras = compras.size(); 
+        int totalEntradas = 0; 
+        int totalKits = 0; 
+        double montoTotal = 0; 
+        for (Compra c: compras){
+            if(c.getTipoCompra() == TipoCompra.ENTRADA){
+                totalEntradas++; 
+            }else if(c.getTipoCompra() == TipoCompra.KIT){
+                totalKits++; 
+            }
+            montoTotal+= c.getValorPagado(); 
+        }
+        Reporte reporte = new Reporte(totalCompras, totalEntradas, totalKits, montoTotal); 
+        System.out.println("====GENERAR REPORTE DE VENTAS====="); 
+        System.out.println(reporte.toString());
+    }
 
 }
