@@ -49,7 +49,7 @@ public class Aficionado extends Usuario {
         for (Compra compra : compras) {
 
             if (compra.getCodigoAficionado()
-                    .equals(getcodigoUnico())) {
+                    .equals(getCodigoUnico())) {
 
                 System.out.println(compra);
             }
