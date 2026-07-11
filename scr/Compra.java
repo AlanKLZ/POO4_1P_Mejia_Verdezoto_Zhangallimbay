@@ -52,4 +52,15 @@ public class Compra {
     public String getCodigoAficionado(){
         return codigoAficionado;
     }
+
+    public Compra(String codigoReferencia, TipoCompra tipoCompra, Date fechaCompra, int cantidad, double valorPagado, String codigoAficionado){
+        this.codigo = "C"+ String.format("%03d", contador);
+        this.codigoReferencia = codigoReferencia;
+        this.tipoCompra = tipoCompra;
+        this.fechaCompra = fechaCompra;
+        this.cantidad = cantidad;
+        this.valorPagado = valorPagado;
+        this.codigoAficionado = codigoAficionado;
+        contador++;
+    }
 }
