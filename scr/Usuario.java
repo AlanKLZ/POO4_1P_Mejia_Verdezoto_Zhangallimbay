@@ -10,53 +10,53 @@ abstract class Usuario{
     protected String correo;
     protected RolUsuario rol;
 
-    public String getcodigoUnico(){
+    public String getCodigoUnico(){
         return codigoUnico;
     }
-    public String getcedula(){
+    public String getCedula(){
         return cedula;
     }
-    public String getnombres(){
+    public String getNombres(){
         return nombres;
     }
-    public String getapellidos(){
+    public String getApellidos(){
         return apellidos;
     }
-    public String getusuario(){
+    public String getUsuario(){
         return usuario;
     }
-    public String getcontraseña(){
+    public String getContraseña(){
         return contraseña;
     }
-    public String getcorreo(){
+    public String getCorreo(){
         return correo;
     }
-    public RolUsuario getrolUsuario(){
+    public RolUsuario getRolUsuario(){
         return rol;
     }
 
     public void setCodigoUnico(String cod){
         this.codigoUnico = cod;
     }
-    public void setnombres(String nombres){
+    public void setNombres(String nombres){
         this.nombres = nombres;
     }
-    public void setcedula(String cedula){
+    public void setCedula(String cedula){
         this.cedula = cedula;
     }
-    public void setapellidos(String apellidos){
+    public void setApellidos(String apellidos){
         this.apellidos = apellidos;
     }
-    public void setusuario(String usuario){
+    public void setUsuario(String usuario){
         this.usuario = usuario;
     }
-    public void setcontraseña(String contraseña){
+    public void setContraseña(String contraseña){
         this.contraseña = contraseña;
     }
-    public void setcorreo(String correo){
+    public void setCorreo(String correo){
         this.correo = correo;
     }
-    public void setRol(RolUsuario rol){
+    public void setRolUsuario(RolUsuario rol){
         this.rol = rol;
     }
 
