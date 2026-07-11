@@ -20,24 +20,31 @@ public class Aficionado extends Usuario {
              this.paisFavorito = paisFavorito;
     }
 
+
     public String getCelular() {
         return celular;
-    }
-
-    public String getPaisFavorito() {
-        return paisFavorito;
     }
 
     public void setCelular(String celular) {
         this.celular = celular;
     }
 
+    public String getPaisFavorito() {
+        return paisFavorito;
+    }
+
     public void setPaisFavorito(String paisFavorito) {
         this.paisFavorito = paisFavorito;
     }
 
+
+
+  
+
     @Override
     public void consultarEntradas(ArrayList<Compra> compras) {
+
+        
 
         for (Compra compra : compras) {
 

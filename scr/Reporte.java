@@ -1,17 +1,19 @@
-import java.util.ArrayList;
+
+import java.util.Date; 
 
 public class Reporte {
     private int totalCompras; 
     private int totalEntradas; 
     private int totalKits; 
     private double montoTotal; 
-    //private Date fechaReporte; 
+    private Date fechaReporte; 
 
-    public Reporte(int totalCompras, int totalEntrada, int totalKits, double montoTotal){
+    public Reporte(int totalCompras, int totalEntradas, int totalKits, double montoTotal){
         this.totalCompras = totalCompras; 
-        this.totalEntradas = totalEntrada; 
-        this.totalKits = totalCompras; 
+        this.totalEntradas = totalEntradas; 
+        this.totalKits = totalKits; 
         this.montoTotal = montoTotal; 
+        this.fechaReporte = new Date(); 
     }
 
     public int getTotalCompras(){
@@ -38,6 +40,9 @@ public class Reporte {
     }
     public void setMontoTotal(double montoTotal){
         this.montoTotal = montoTotal; 
+    }
+    public Date getFechaReporte(){
+        return fechaReporte; 
     }
 
     @Override
