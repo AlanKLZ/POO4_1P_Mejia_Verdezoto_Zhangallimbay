@@ -53,7 +53,7 @@ public class Compra {
         return codigoAficionado;
     }
 
-    public Compra(String codigoReferencia, TipoCompra tipoCompra, LocalDate fechaCompra, int cantidad, double valorPagado, String codigoAficionado){
+    public Compra(TipoCompra tipoCompra, String codigoReferencia,  LocalDate fechaCompra, int cantidad, double valorPagado, String codigoAficionado){
         this.codigo = "C"+ String.format("%03d", contador);
         this.codigoReferencia = codigoReferencia;
         this.tipoCompra = tipoCompra;
