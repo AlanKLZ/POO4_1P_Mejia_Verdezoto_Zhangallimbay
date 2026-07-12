@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-abstract class Usuario{
+public abstract class Usuario{
     protected String codigoUnico;
     protected String cedula;
     protected String nombres;
@@ -9,6 +9,17 @@ abstract class Usuario{
     protected String contraseña;
     protected String correo;
     protected RolUsuario rol;
+
+    public Usuario(String codigoUnico,String cedula,String nombres, String apellidos,String usuario,String contraseña,String correo,RolUsuario rol){
+        this.codigoUnico = codigoUnico;
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.correo = correo;
+        this.rol = rol;
+    }
 
     public String getCodigoUnico(){
         return codigoUnico;
@@ -60,21 +71,19 @@ abstract class Usuario{
         this.rol = rol;
     }
 
-    public Usuario(String codigoUnico,String cedula,String nombres, String apellidos,String usuario,String contraseña,String correo,RolUsuario rol){
-        this.codigoUnico = codigoUnico;
-        this.cedula = cedula;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.usuario = usuario;
-        this.contraseña = contraseña;
-        this.correo = correo;
-        this.rol = rol;
-    }
     public abstract void consultarEntradas(ArrayList<Compra> compras);
     
     @Override
     public String toString(){
-        return "Usuario";
+        return "Codigo unico: " +codigoUnico +
+                "\nCedula: " + cedula +
+                "\nNombres: "+ nombres+
+                "\nApellidos: "+ apellidos+
+                "\nUsuario: "+ usuario+
+                "\nContraseña: "+ contraseña+
+                "\nCorreo: "+ correo+ 
+                "\nRol: "+ rol; 
+
     }
 }
 

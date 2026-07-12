@@ -207,9 +207,10 @@ public class Partido {
                 "\nCapacidad: "+ capacidad+ 
                 "\nFase: " + fase+
                 "\nZonas Disponibles: "+ 
-                "\nGENERAL | DISPONIBLES "+ entradasGeneral+
-                "\nPREFERENCIAL | DISPONIBLES "+ entradasPreferencial+
-                "\nVIP | DISPONIBLES "+ entradasVIP; 
+                "\nGENERAL | DISPONIBLES "+ entradasGeneral+ " |Precio: $"+ precioGeneral+
+                "\nPREFERENCIAL | DISPONIBLES "+ entradasPreferencial+ " |Precio: $"+ precioPreferencial+
+                "\nVIP | DISPONIBLES "+ entradasVIP +" |Precio: $"+precioVIP+
+                "\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"; 
     }
     }
 
