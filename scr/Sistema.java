@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Sistema {
     private ArrayList<Usuario> usuarios;
@@ -140,5 +141,75 @@ public class Sistema {
             }
         }
     }
+
+    public void cargarPartidos() {
+        partidos.clear();
+
+        ArrayList<String> lineas =
+                ManejoArchivos.LeeFichero("scr/texts/partidos.txt");
+
+        for (int i = 1; i < lineas.size(); i++) {
+            String[] datos = lineas.get(i).split("\\|");
+
+            if (datos.length != 14) {
+                continue;
+            }
+
+            LocalDate fecha = LocalDate.parse(datos[3]);
+
+            Partido partido = new Partido(
+                    datos[0], // Código
+                    datos[1], // Local
+                    datos[2], // Visitante
+                    fecha, // Fecha
+                    datos[4], // Estadio
+                    datos[5], // Ciudad
+                    Integer.parseInt(datos[6]), // Capacidad
+                    Integer.parseInt(datos[7]), // General
+                    Integer.parseInt(datos[8]), // Preferencial
+                    Integer.parseInt(datos[9]), // VIP
+                    Double.parseDouble(datos[10]), // Precio General
+                    Double.parseDouble(datos[11]), // Precio Preferencial
+                    Double.parseDouble(datos[12]),  // Precio VIP
+                    datos[13] // Fase
+            );
+
+            partidos.add(partido);
+        }
+    }
+
+    public void cargarKitCompra() {
+        kitsCompra.clear();
+         
+        // Leer kits.txt
+        ArrayList<String> lineas = ManejoArchivos.LeeFichero("scr/texts/kits.txt");
+
+        for (int i = 1; i < lineas.size(); i++) {
+            String[] datos = lineas.get(i).split("\\|");
+            
+            if (datos.length != 6)
+            continue;
+            
+            ArrayList<String> codigoPartidos = new ArrayList<>();
+            String[] partidos = datos[3].split(",");
+            
+            for (String codigo : partidos) {
+            codigoPartidos.add(codigo);
+        }
+
+        // Crear el objeto KitCompra
+            KitCompra kit = new KitCompra(
+                datos[0], // Código
+                datos[1], // Nombre
+                datos[2], // Descripción
+                codigoPartidos, // Partidos incluidos
+                Double.parseDouble(datos[4]), // Precio
+                Integer.parseInt(datos[5]) // Disponibles
+        );
+
+        kitsCompra.add(kit);
+        }
+    }
 }
+
 
