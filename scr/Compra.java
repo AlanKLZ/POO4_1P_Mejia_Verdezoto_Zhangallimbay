@@ -73,6 +73,6 @@ public class Compra {
             "\n Fecha de compra     : " + fechaCompra +
             "\n Cantidad            : " + cantidad +
             "\n Valor Pagado        : $" + String.format("%.2f", valorPagado) +
-            "\n---------------------------------------";
+            "\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"; 
     }
 }
