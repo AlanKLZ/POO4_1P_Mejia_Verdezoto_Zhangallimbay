@@ -1,10 +1,10 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Partido {
     private String codigo; 
     private String seleccionLocal; 
     private String seleccionVisitante; 
-    private Date fecha; 
+    private LocalDate fecha; 
     private String estadio; 
     private String ciudad; 
     private int capacidad; 
@@ -17,7 +17,7 @@ public class Partido {
     private String fase; 
     
     
-    public Partido(String codigo, String seleccionLocal, String seleccionVisitante, Date fecha, String estadio,
+    public Partido(String codigo, String seleccionLocal, String seleccionVisitante, LocalDate fecha, String estadio,
             String ciudad, int capacidad, int entradasGeneral, int entradasPreferencial, int entradasVIP,
             double precioGeneral, double precioPreferencial, double precioVIP, String fase) {
         this.codigo = codigo;
@@ -60,11 +60,11 @@ public class Partido {
         this.seleccionVisitante = seleccionVisitante;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

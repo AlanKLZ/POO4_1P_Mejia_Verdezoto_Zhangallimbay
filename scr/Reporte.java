@@ -1,19 +1,19 @@
 
-import java.util.Date; 
+import java.time.LocalDate; 
 
 public class Reporte {
     private int totalCompras; 
     private int totalEntradas; 
     private int totalKits; 
     private double montoTotal; 
-    private Date fechaReporte; 
+    private LocalDate fechaReporte; 
 
     public Reporte(int totalCompras, int totalEntradas, int totalKits, double montoTotal){
         this.totalCompras = totalCompras; 
         this.totalEntradas = totalEntradas; 
         this.totalKits = totalKits; 
         this.montoTotal = montoTotal; 
-        this.fechaReporte = new Date(); 
+        this.fechaReporte = LocalDate.now(); 
     }
 
     public int getTotalCompras(){
@@ -41,7 +41,7 @@ public class Reporte {
     public void setMontoTotal(double montoTotal){
         this.montoTotal = montoTotal; 
     }
-    public Date getFechaReporte(){
+    public LocalDate getFechaReporte(){
         return fechaReporte; 
     }
 

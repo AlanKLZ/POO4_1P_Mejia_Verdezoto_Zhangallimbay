@@ -1,11 +1,11 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Compra {
     public static int contador = 1;
     private String codigo;
     private String codigoReferencia;
     private TipoCompra tipoCompra;
-    private Date fechaCompra;
+    private LocalDate fechaCompra;
     private int cantidad;
     private double valorPagado;
     private String codigoAficionado;
@@ -19,7 +19,7 @@ public class Compra {
     public void setTipoCompra(TipoCompra tipo){
         this.tipoCompra = tipo;
     }
-    public void setFechaCompra(Date fecha){
+    public void setFechaCompra(LocalDate fecha){
         this.fechaCompra = fecha;
     }
     public void setCantidad(int cantidad){
@@ -40,7 +40,7 @@ public class Compra {
     public TipoCompra getTipoCompra(){
         return tipoCompra;
     }
-    public Date getFechaCompra(){
+    public LocalDate getFechaCompra(){
         return fechaCompra;
     }
     public int getCantidad(){
@@ -53,7 +53,7 @@ public class Compra {
         return codigoAficionado;
     }
 
-    public Compra(String codigoReferencia, TipoCompra tipoCompra, Date fechaCompra, int cantidad, double valorPagado, String codigoAficionado){
+    public Compra(String codigoReferencia, TipoCompra tipoCompra, LocalDate fechaCompra, int cantidad, double valorPagado, String codigoAficionado){
         this.codigo = "C"+ String.format("%03d", contador);
         this.codigoReferencia = codigoReferencia;
         this.tipoCompra = tipoCompra;
