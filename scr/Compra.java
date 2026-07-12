@@ -63,4 +63,19 @@ public class Compra {
         this.codigoAficionado = codigoAficionado;
         contador++;
     }
+
+    @Override
+    public String toString() {
+        return "\n==========================================" +
+            "\n           INFORMACIÓN DE COMPRA" +
+            "\n==========================================" +
+            "\n Código de Compra : " + codigo +
+            "\n Código Referencia: " + codigoReferencia +
+            "\n Tipo de Compra   : " + tipoCompra +
+            "\n Fecha            : " + fechaCompra +
+            "\n Cantidad         : " + cantidad +
+            "\n Valor Pagado     : $" + String.format("%.2f", valorPagado) +
+            "\n Código Aficionado: " + codigoAficionado +
+            "\n==========================================";
+    }
 }
