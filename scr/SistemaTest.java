@@ -8,6 +8,6 @@ public class SistemaTest {
         System.out.println("Ingrese su usuario y contraseña para iniciar sesión");
         String usuario = sc.nextLine();
         String contraseña = sc.nextLine();
-        sistema.iniciarSesion(usuario, contraseña); //funciona ej: cmendoza / mundial2026
+        sistema.iniciarSesion(); //funciona ej: cmendoza / mundial2026
     }
 }
