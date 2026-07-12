@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Date; 
+import java.time.LocalDate; 
 
 public class Aficionado extends Usuario {
 
@@ -50,46 +49,23 @@ public class Aficionado extends Usuario {
         }
     }
 
-    public Compra comprar(Partido p, int cantidad, String numTarjeta){
+    public Compra comprar(Partido p, Zona zona, int cantidad, String numTarjeta){
         if (cantidad <=0){
             System.out.println("La cantidad debe ser mayor que cero");
             return null; 
         }
         
-        Scanner sc = new Scanner(System.in); 
-        Zona zona = null; 
-
-        while (zona == null){
-            System.out.println("Selecciona una zona: GENERAL| PREFERENCIAL| VIP"); 
-            String zonaS = sc.nextLine().toUpperCase(); 
-
-            if (zonaS.equals("GENERAL")){
-            zona = Zona.GENERAL; 
-
-            }else if(zonaS.equals("PREFERENCIAL")){
-            zona=Zona.PREFERENCIAL; 
-
-            }else if(zonaS.equals("VIP")){
-            zona=Zona.VIP; 
-            }else{
-                System.out.println("Zona inválida. Intente nuevamente"); 
-            }
-        }
-
         if (!p.validarStock(zona, cantidad)){
             System.out.println("No hay suficiente stock en la zona seleccionada"); 
             return null; 
         }
-
         double precioUnitario = p.obtenerPrecioZona(zona); 
         double totalPago = precioUnitario * cantidad; 
         System.out.println("Total a pagar: $"+ totalPago);
         System.out.println("Procesando pago con la tarjeta ingresada..."); 
         System.out.println("Pago exitoso"); 
 
-        Compra compraRealizada = new Compra(p.getCodigo(), TipoCompra.ENTRADA, new Date(), cantidad, totalPago, this.codigoUnico); 
-        //Registrar la compra en txt 
-        //Generar la notificacion de correo para el aficionado
+        Compra compraRealizada = new Compra(TipoCompra.ENTRADA,p.getCodigo(), LocalDate.now(), cantidad, totalPago, this.codigoUnico); 
         p.actualizarDisponibilidad(zona, cantidad);
         return compraRealizada; 
         
