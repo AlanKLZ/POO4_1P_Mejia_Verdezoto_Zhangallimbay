@@ -38,7 +38,7 @@ public class KitCompra {
     }
 
     public boolean validarStock(int cantidad){
-        return cantidad <= cantidadDisponible;
+        return cantidad>0 && cantidad <= cantidadDisponible;
     }
 
     public void reducirStock(int cantidad){
@@ -47,5 +47,13 @@ public class KitCompra {
         }else{
             System.out.println("No hay suficiente stock disponible");
         }
+    }
+    @Override
+    public String toString(){
+        return "Kit: "+ nombre+
+        "\nCódigo de Kit: "+ codigoKit+
+        "\nDescripción: "+ descripcion+
+        "\nCódigo de partidos incluidos: "+ codigoPartidos+
+        "\nPrecio: $"+ precio; 
     }
 }   

@@ -47,9 +47,12 @@ public class Reporte {
 
     @Override
     public String toString(){
-        return "Resumen de ventas registradas: " + "\nTotal de compras: " + totalCompras +
-        "\nCompras por tipo: "+ "\nEntradas: "+ totalEntradas + "\nKits: "+ totalKits + 
-        "\nMonto total recaudado: "+ "\n$"+ montoTotal; 
+        return 
+        "\nFecha de generación de reporte: "+fechaReporte+ 
+        "\nTotal de compras registradas: " + totalCompras +
+        "\nTotal de compras de entradas individuales: "+ totalEntradas + 
+        "\nTotal de compras de kits: "+ totalKits + 
+        "\nMonto total recaudado: $"+ montoTotal; 
     }
 
 }
