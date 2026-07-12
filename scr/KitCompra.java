@@ -36,4 +36,16 @@ public class KitCompra {
     public int getCantidadDisponible() {
         return cantidadDisponible;
     }
+
+    public boolean validadStock(){
+        return cantidadDisponible > 0;
+    }
+
+    public void reducirStock(int cantidad){
+        if (validadStock() && cantidad <= cantidadDisponible){
+            cantidadDisponible -= cantidad;
+        }else{
+            System.out.println("No hay suficiente stock disponible");
+        }
+    }
 }   
