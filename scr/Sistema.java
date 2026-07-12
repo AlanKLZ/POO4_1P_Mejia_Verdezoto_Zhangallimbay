@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Sistema {
     private ArrayList<Usuario> usuarios;
@@ -140,5 +141,43 @@ public class Sistema {
             }
         }
     }
+
+    public void cargarPartidos() {
+        partidos.clear();
+
+        ArrayList<String> lineas =
+                ManejoArchivos.LeeFichero("scr/texts/partidos.txt");
+
+        for (int i = 1; i < lineas.size(); i++) {
+            String[] datos = lineas.get(i).split("\\|");
+
+            if (datos.length != 14) {
+                continue;
+            }
+
+            LocalDate fecha = LocalDate.parse(datos[3]);
+
+            Partido partido = new Partido(
+                    datos[0],
+                    datos[1],
+                    datos[2],
+                    fecha,
+                    datos[4],
+                    datos[5],
+                    Integer.parseInt(datos[6]),
+                    Integer.parseInt(datos[7]),
+                    Integer.parseInt(datos[8]),
+                    Integer.parseInt(datos[9]),
+                    Double.parseDouble(datos[10]),
+                    Double.parseDouble(datos[11]),
+                    Double.parseDouble(datos[12]),
+                    datos[13]
+            );
+
+            partidos.add(partido);
+        }
+    }
+
 }
+
 
