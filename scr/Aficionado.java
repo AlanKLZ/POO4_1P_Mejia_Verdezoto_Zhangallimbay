@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.time.LocalDate; 
+import java.time.LocalDate;
+import java.util.ArrayList; 
 
 public class Aficionado extends Usuario {
 
@@ -48,6 +48,14 @@ public class Aficionado extends Usuario {
             }
         }
     }
+    public Partido buscarPartido(ArrayList<Partido> partidos,String codigo){
+        for (Partido p: partidos){
+            if (p.getCodigo().equals(codigo)){
+                return p;
+            }
+        }
+        return null;
+    }   
 
     public Compra comprar(Partido p, Zona zona, int cantidad, String numTarjeta){
         if (cantidad <=0){
