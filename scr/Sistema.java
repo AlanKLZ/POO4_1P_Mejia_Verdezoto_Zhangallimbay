@@ -18,6 +18,7 @@ public class Sistema {
     private ArrayList<KitCompra> kitsCompra;
     private ArrayList<Compra> compras;
     public static boolean sesionIniciada;
+    public static boolean sistemaActivo = true;
 
     public Sistema() {
         usuarios = new ArrayList<>();
@@ -36,7 +37,7 @@ public class Sistema {
     }
     public void cerrarSesion() {
         sesionIniciada = false;
-        String mensaje = "\n Saliendo del sistema...\n";
+        String mensaje = "\n Volviendo al inicio de sesion.\n";
         System.out.println(mensaje);
     }
 
@@ -55,7 +56,7 @@ public class Sistema {
             sesionIniciada = true;
             System.out.println("Usuario autenticado correctamente."); 
             mensajeDeVerificacion(actual);
-                       
+            selectorMenu(actual);        
         } 
         else {
             System.out.println("Usuario o contraseña incorrectos.");
@@ -65,7 +66,10 @@ public class Sistema {
     
     public void mensajeDeVerificacion(Usuario usuario){
         Scanner sc = new Scanner(System.in);
+        String cierreSistema = "Saliendo del sistema...";
         System.out.println("\nRol detectado: "+ usuario.getRolUsuario()+"\n");
+
+        //Sección para codigo que usa el Aficionado.
         if (usuario instanceof Aficionado){            
             Aficionado aficionado = (Aficionado) usuario;
             System.out.println("Bienvenid@, "+aficionado.getNombres()+" "+aficionado.getApellidos());
@@ -74,13 +78,15 @@ public class Sistema {
             String respuesta = sc.nextLine();
             if (respuesta.equalsIgnoreCase("S")){
                 System.out.println("\nIdentidad confirmada.");
-                mostrarMenuAficionado();
             }
             else if (respuesta.equalsIgnoreCase("N")){
                 System.out.println("\nVerificacion fallida.\nPor motivos de seguridad se cerrará la sesion.");
-                cerrarSesion();
+                System.out.println(cierreSistema);
+                sistemaActivo = false;
+                               
             }
         }
+        //Seccion para el codigo que usa el Organizador.
         else if (usuario instanceof Organizador){
             Organizador organizador = (Organizador) usuario;
             System.out.println("Bienvenid@, "+organizador.getNombres()+" "+organizador.getApellidos());
@@ -89,12 +95,23 @@ public class Sistema {
             String respuesta = sc.nextLine();
             if (respuesta.equalsIgnoreCase("S")){
                 System.out.println("Identidad confirmada.");
-                mostrarMenuOrganizador();
             }
             else if (respuesta.equalsIgnoreCase("N")){
                 System.out.println("Verificacion fallida.\nPor motivos de seguridad se cerrará la sesion.");
-                cerrarSesion();
+                System.out.println(cierreSistema);
+                sistemaActivo = false;
             }
+        }
+    }
+    public void selectorMenu(Usuario u){
+        if (u instanceof Aficionado){
+            mostrarMenuAficionado();
+        }
+        else if (u instanceof Organizador){
+            mostrarMenuOrganizador();
+        }
+        else {
+            System.out.println("Usuario no registrado");
         }
     }
     //Metodo que se usara si el usuario es un aficionado
@@ -335,8 +352,8 @@ public class Sistema {
 
     //Configuración de envio de correos 
     //Correo y clave de aplicación del sistema
-    public static final String CORREO_EMISOR = "sistemamundialpoo@gmail.com"; 
-    public static final String CLAVE_APLICACION = "jiwsjoncstctwlfl"; 
+    private final String CORREO_EMISOR = "sistemamundialpoo@gmail.com"; 
+    private final String CLAVE_APLICACION = "jiwsjoncstctwlfl"; 
 
     //Creación de la sesión
     private Session crearSesionCorreo() {
