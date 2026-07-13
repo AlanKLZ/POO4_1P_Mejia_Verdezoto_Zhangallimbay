@@ -4,6 +4,8 @@ public class SistemaTest {
         Sistema sistema = new Sistema();
         Scanner sc = new Scanner(System.in);
         sistema.cargarUsuarios();
+        sistema.cargarPartidos();
+        sistema.cargarKitCompra();
         while (Sistema.sistemaActivo){
             sistema.iniciarSesion();
             //ejemplo aficionado: cmendoza / mundial2026
