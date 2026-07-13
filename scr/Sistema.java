@@ -157,14 +157,14 @@ public class Sistema {
                     System.out.println("Escriba los datos para proceder con el pago");
                     System.out.print("Codigo de partido: ");
                     String codigo = sc.nextLine();
-                    System.out.print("Zona del partido: ");
-                    String zona = sc.nextLine().toUpperCase();
+                    Zona zona = validarZona();
                     System.out.print("Cantidad: ");
                     int cantidad = sc.nextInt();
                     sc.nextLine();
                     System.out.print("Numero de tarjetao: ");
+                    String numTarjeta = sc.nextLine();
                     Partido p = aficionado.buscarPartido(partidos, codigo);
-                    //aficionado.comprar(p, zona, cantidad, zona);
+                    aficionado.comprar(p, zona, cantidad, numTarjeta);
                     
                     break;
                 }
@@ -182,7 +182,35 @@ public class Sistema {
             }
         }
     }
-
+    public Zona validarZona(){
+        Scanner sc = new Scanner(System.in);
+        int i =0;
+        while(true){
+            System.out.println("<Seleccione la zona de la compra>");
+            System.out.println("1) Zona General");
+            System.out.println("2) Zona Preferencial");
+            System.out.println("3) Zona Vip");
+            if (sc.hasNextInt()){
+                    i = sc.nextInt();
+                    sc.nextLine();
+                    if(i >= 1 && i <= 3) {
+                        break;
+                    } else {
+                        System.out.println("\nOpción inválida.\n");
+                    }
+                }
+                else{
+                    System.out.println("\nError: Debe ingresar in numero.\n");
+                    sc.nextLine();
+                }
+            switch (i){
+                case 1:return Zona.GENERAL;
+                case 2:return Zona.PREFERENCIAL;
+                case 3:return Zona.VIP;
+            }
+        }
+        return null;
+    }
     //Metodo que se usara si el usuario es un organizador
     public void mostrarMenuOrganizador(Usuario u) {  
         Organizador organizador = (Organizador) u;
