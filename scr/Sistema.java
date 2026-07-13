@@ -141,7 +141,7 @@ public class Sistema {
                     }
                 }
                 else{
-                    System.out.println("\nError: Debe ingresar in numero.\n");
+                    System.out.println("\nError: Debe ingresar un numero.\n");
                     sc.nextLine();
                 }
             }
@@ -154,7 +154,7 @@ public class Sistema {
                 }
                 case 2:{                    
                     // lógica para comprar entradas
-                    System.out.println("Escriba los datos para proceder con el pago");
+                    System.out.println("Escriba los datos para proceder con el pago: ");
                     System.out.print("Codigo de partido: ");
                     String codigo = sc.nextLine();
                     Zona zona = validarZona();
@@ -170,6 +170,7 @@ public class Sistema {
                 }
                 case 3:{                    
                     // lógica para consultar kitcompras
+                    break;
                 }
                 case 4:{                    
                     // lógica para consultar entradas
