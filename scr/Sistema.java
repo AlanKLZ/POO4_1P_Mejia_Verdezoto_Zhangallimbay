@@ -18,6 +18,7 @@ public class Sistema {
     private ArrayList<KitCompra> kitsCompra;
     private ArrayList<Compra> compras;
     public static boolean sesionIniciada;
+    public static boolean sistemaActivo = true;
 
     public Sistema() {
         usuarios = new ArrayList<>();
@@ -36,13 +37,17 @@ public class Sistema {
     }
     public void cerrarSesion() {
         sesionIniciada = false;
-        System.out.println("Saliendo del sistema...");
+        String mensaje = "\n Volviendo al inicio de sesion.\n";
+        System.out.println(mensaje);
     }
 
     public void iniciarSesion() {
-        System.out.println("===== INICIO DE SESIÓN ===== ");
+        System.out.println("\nSistema de Venta y Gestión de Entradas para el Mundial\n");
+        System.out.println("=========== INICIO DE SESIÓN ========== ");        
         Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese su usuario: ");
         String usuario = sc.nextLine();
+        System.out.print("Ingrese su contraseña: ");
         String contraseña = sc.nextLine();
         System.out.println("Usuario: " + usuario);
         System.out.println("Contraseña: "+"*".repeat(contraseña.length()));
@@ -51,7 +56,7 @@ public class Sistema {
             sesionIniciada = true;
             System.out.println("Usuario autenticado correctamente."); 
             mensajeDeVerificacion(actual);
-                       
+            selectorMenu(actual);        
         } 
         else {
             System.out.println("Usuario o contraseña incorrectos.");
@@ -61,7 +66,10 @@ public class Sistema {
     
     public void mensajeDeVerificacion(Usuario usuario){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Rol detectado: "+ usuario.getRolUsuario());
+        String cierreSistema = "Saliendo del sistema...";
+        System.out.println("\nRol detectado: "+ usuario.getRolUsuario()+"\n");
+
+        //Sección para codigo que usa el Aficionado.
         if (usuario instanceof Aficionado){            
             Aficionado aficionado = (Aficionado) usuario;
             System.out.println("Bienvenid@, "+aficionado.getNombres()+" "+aficionado.getApellidos());
@@ -69,14 +77,16 @@ public class Sistema {
             System.out.println("\n¿Es numero de teléfono es correcto? (S/N)");
             String respuesta = sc.nextLine();
             if (respuesta.equalsIgnoreCase("S")){
-                System.out.println("Identidad confirmada.");
-                mostrarMenuAficionado();
+                System.out.println("\nIdentidad confirmada.");
             }
             else if (respuesta.equalsIgnoreCase("N")){
-                System.out.println("Verificacion fallida.\nPor motivos de seguridad se cerrará la sesion.");
-                cerrarSesion();
+                System.out.println("\nVerificacion fallida.\nPor motivos de seguridad se cerrará la sesion.");
+                System.out.println(cierreSistema);
+                sistemaActivo = false;
+                               
             }
         }
+        //Seccion para el codigo que usa el Organizador.
         else if (usuario instanceof Organizador){
             Organizador organizador = (Organizador) usuario;
             System.out.println("Bienvenid@, "+organizador.getNombres()+" "+organizador.getApellidos());
@@ -85,12 +95,23 @@ public class Sistema {
             String respuesta = sc.nextLine();
             if (respuesta.equalsIgnoreCase("S")){
                 System.out.println("Identidad confirmada.");
-                mostrarMenuOrganizador();
             }
             else if (respuesta.equalsIgnoreCase("N")){
                 System.out.println("Verificacion fallida.\nPor motivos de seguridad se cerrará la sesion.");
-                cerrarSesion();
+                System.out.println(cierreSistema);
+                sistemaActivo = false;
             }
+        }
+    }
+    public void selectorMenu(Usuario u){
+        if (u instanceof Aficionado){
+            mostrarMenuAficionado();
+        }
+        else if (u instanceof Organizador){
+            mostrarMenuOrganizador();
+        }
+        else {
+            System.out.println("Usuario no registrado");
         }
     }
     //Metodo que se usara si el usuario es un aficionado
@@ -106,12 +127,19 @@ public class Sistema {
             System.out.println("===== 4. CONSULTAR ENTRADAS =====");
             System.out.println("===== 5. SALIR =====");
             System.out.print("Ingrese una opción: ");
-            opcion = sc.nextInt();
-                if (sc.hasNextInt()&& opcion >= 1 && opcion <= 5) {
-                    break;
-                } else {
-                    System.out.println("Opción inválida. Por favor, ingrese un número.");
-                    sc.next();
+
+            if (sc.hasNextInt()){
+                    opcion = sc.nextInt();
+                    sc.nextLine();
+                    if(opcion >= 1 && opcion <= 5) {
+                        break;
+                    } else {
+                        System.out.println("\nOpción inválida. Por favor, ingrese un número.\n");
+                    }
+                }
+                else{
+                    System.out.println("\nError: Debe ingresar in numero.\n");
+                    sc.nextLine();
                 }
             }
 
@@ -141,23 +169,28 @@ public class Sistema {
     //Metodo que se usara si el usuario es un organizador
     public void mostrarMenuOrganizador() {  
         Scanner sc = new Scanner(System.in);
-        while (sesionIniciada) {
-            int opcion = 0;
+        int opcion = 0;
+        while (sesionIniciada) {            
             while(true){
             System.out.println("===== Menu de Organizador =====");
             System.out.println("===== 1. CONSULTAR ENTRADAS =====");
             System.out.println("===== 2. GENERAR REPORTE =====");
             System.out.println("===== 3. SALIR =====");
             System.out.print("Ingrese una opción: ");
-            opcion = sc.nextInt();
-                if (sc.hasNextInt()&& opcion >= 1 && opcion <= 3) {
-                    break;
-                } else {
-                    System.out.println("Opción inválida. Por favor, ingrese un número.");
-                    sc.next();
+            if (sc.hasNextInt()){
+                    opcion = sc.nextInt();
+                    sc.nextLine();
+                    if(opcion >= 1 && opcion <= 3) {
+                        break;
+                    } else {
+                        System.out.println("\nOpción inválida. Por favor, ingrese un número.\n");
+                    }
+                }
+                else{
+                    System.out.println("\nError: Debe ingresar in numero.\n");
+                    sc.nextLine();
                 }
             }
-
             switch (opcion) {
                 case 1:{
                     //lógica para consultar entradas
@@ -319,8 +352,8 @@ public class Sistema {
 
     //Configuración de envio de correos 
     //Correo y clave de aplicación del sistema
-    public static final String CORREO_EMISOR = "sistemamundialpoo@gmail.com"; 
-    public static final String CLAVE_APLICACION = "jiwsjoncstctwlfl"; 
+    private final String CORREO_EMISOR = "sistemamundialpoo@gmail.com"; 
+    private final String CLAVE_APLICACION = "jiwsjoncstctwlfl"; 
 
     //Creación de la sesión
     private Session crearSesionCorreo() {

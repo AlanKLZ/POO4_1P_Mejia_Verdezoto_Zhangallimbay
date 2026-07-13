@@ -4,7 +4,7 @@ public class SistemaTest {
         Sistema sistema = new Sistema();
         Scanner sc = new Scanner(System.in);
         sistema.cargarUsuarios();
-        while (!Sistema.sesionIniciada){
+        while (Sistema.sistemaActivo){
             sistema.iniciarSesion();
             //ejemplo aficionado: cmendoza / mundial2026
             //ejemplo organizador lpereza / admin2026
