@@ -56,7 +56,7 @@ public class Sistema {
             sesionIniciada = true;
             System.out.println("Usuario autenticado correctamente."); 
             mensajeDeVerificacion(actual);
-            selectorMenu(actual);        
+            selectorMenu(actual);                    
         } 
         else {
             System.out.println("Usuario o contraseña incorrectos.");
@@ -104,14 +104,16 @@ public class Sistema {
         }
     }
     public void selectorMenu(Usuario u){
-        if (u instanceof Aficionado){
-            mostrarMenuAficionado();
-        }
-        else if (u instanceof Organizador){
-            mostrarMenuOrganizador();
-        }
-        else {
-            System.out.println("Usuario no registrado");
+        if(sistemaActivo){
+            if (u instanceof Aficionado){
+                mostrarMenuAficionado();
+            }
+            else if (u instanceof Organizador){
+                mostrarMenuOrganizador();
+            }
+            else {
+                System.out.println("Usuario no registrado");
+            }
         }
     }
     //Metodo que se usara si el usuario es un aficionado
