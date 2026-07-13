@@ -113,16 +113,16 @@ public class Sistema {
 
             if (sc.hasNextInt()){
                     opcion = sc.nextInt();
+                    sc.nextLine();
                     if(opcion >= 1 && opcion <= 5) {
                         break;
                     } else {
                         System.out.println("\nOpción inválida. Por favor, ingrese un número.\n");
-                        sc.next();
                     }
                 }
                 else{
                     System.out.println("\nError: Debe ingresar in numero.\n");
-                    sc.next();
+                    sc.nextLine();
                 }
             }
 
@@ -152,26 +152,26 @@ public class Sistema {
     //Metodo que se usara si el usuario es un organizador
     public void mostrarMenuOrganizador() {  
         Scanner sc = new Scanner(System.in);
-        while (sesionIniciada) {
-            int opcion = 0;
+        int opcion = 0;
+        while (sesionIniciada) {            
             while(true){
             System.out.println("===== Menu de Organizador =====");
             System.out.println("===== 1. CONSULTAR ENTRADAS =====");
             System.out.println("===== 2. GENERAR REPORTE =====");
             System.out.println("===== 3. SALIR =====");
             System.out.print("Ingrese una opción: ");
-                if (sc.hasNextInt()){
+            if (sc.hasNextInt()){
                     opcion = sc.nextInt();
-                    if (opcion >= 1 && opcion <= 3) {
+                    sc.nextLine();
+                    if(opcion >= 1 && opcion <= 3) {
                         break;
                     } else {
                         System.out.println("\nOpción inválida. Por favor, ingrese un número.\n");
-                        sc.next();
                     }
                 }
                 else{
                     System.out.println("\nError: Debe ingresar in numero.\n");
-                    sc.next();
+                    sc.nextLine();
                 }
             }
             switch (opcion) {
