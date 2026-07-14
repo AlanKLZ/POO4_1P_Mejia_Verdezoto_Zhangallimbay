@@ -216,6 +216,8 @@ public class Sistema {
         }
         return null;
     }
+/*     Por como está el toString() va a imprimir los datos y luego
+    la info de los enfrentamientos, si quieren lo cambian.Como está cumple su proposito */
     public void consultarKits(Aficionado a){
         for (KitCompra k : kitsCompra){
             k.toString();
