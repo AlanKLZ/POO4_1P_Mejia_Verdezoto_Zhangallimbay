@@ -1,1 +1,7 @@
 
+CódigoCompra|CódigoReferencia|Tipo|FechaCompra|Cantidad|ValorPagado|CódigoAficionado
+CódigoCompra|CódigoReferencia|Tipo|FechaCompra|Cantidad|ValorPagado|CódigoAficionado
+CódigoCompra|CódigoReferencia|Tipo|FechaCompra|Cantidad|ValorPagado|CódigoAficionado
+CódigoCompra|CódigoReferencia|Tipo|FechaCompra|Cantidad|ValorPagado|CódigoAficionado
+C001|M024|ENTRADA|2026-07-14|2|90.0|A009
+CódigoCompra|CódigoReferencia|Tipo|FechaCompra|Cantidad|ValorPagado|CódigoAficionado

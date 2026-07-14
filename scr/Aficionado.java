@@ -105,13 +105,37 @@ public class Aficionado extends Usuario {
         return compraRealizada;
     }
 
-    public Compra comprar(KitCompra kit) {
+    public Compra comprar(ArrayList<KitCompra> kitsCompra, ArrayList<Partido> partidos) {
+
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("===== KITS DISPONIBLES =====");
+        for (KitCompra kit: kitsCompra){
+            System.out.println(kit);
+            System.out.println("Disponibles: "+ kit.getCantidadDisponible()); 
+            System.out.println("Partidos incluidos: "); 
+            for(String codigoPartido: kit.getCodigoPartidos()){
+                Partido partido= buscarPartido(partidos, codigoPartido); 
+                if(partido != null){
+                    System.out.println(partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
+                }
+            }
+        }
+        KitCompra kitSeleccionado = null; 
+        while(kitSeleccionado == null){
+            System.out.println("Ingrese el código del kit: ");
+            String codigo = sc.nextLine(); 
+            kitSeleccionado = buscarKitCompra(kitsCompra, codigo); 
+            if (kitSeleccionado == null){
+                System.out.println("Ingrese un código de kit válido");
+            }
+        }
+        
         int cantidad = 0;
 
         // Pedir una cantidad válida
         while (cantidad <= 0) {
-            System.out.print("Cantidad de kits: ");
+            System.out.print("Cantidad de kits que desea comprar: ");
 
             if (sc.hasNextInt()) {
                 cantidad = sc.nextInt();
@@ -126,7 +150,7 @@ public class Aficionado extends Usuario {
         }
 
         // Validar stock
-        if (!kit.validarStock(cantidad)) {
+        if (!kitSeleccionado.validarStock(cantidad)) {
             System.out.println("No hay suficiente stock disponible.");
             return null;
         }
@@ -135,24 +159,26 @@ public class Aficionado extends Usuario {
         System.out.print("Número de tarjeta: ");
         String numTarjeta = sc.nextLine(); //Nuevamente, solo es referencial.
 
-        double precioKit = kit.getPrecio();
+        double precioKit = kitSeleccionado.getPrecio();
         double totalPago = precioKit * cantidad;
 
         System.out.println("Total a pagar: $" + totalPago);
         System.out.println("Procesando pago con la tarjeta ingresada...");
         System.out.println("Pago exitoso");
 
-        kit.reducirStock(cantidad);
+        kitSeleccionado.reducirStock(cantidad);
 
         return new Compra(
                 TipoCompra.KIT,
-                kit.getCodigo(),
+                kitSeleccionado.getCodigo(),
                 LocalDate.now(),
                 cantidad,
                 totalPago,
                 this.getCodigoUnico()
         );
     }
+
+        
 
     //Lo muevo aqui, porque se usa unicamente aca
     public Zona validarZona() {
