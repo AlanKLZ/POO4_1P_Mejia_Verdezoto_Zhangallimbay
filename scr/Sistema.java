@@ -161,11 +161,13 @@ public class Sistema {
                     System.out.print("Cantidad: ");
                     int cantidad = sc.nextInt();
                     sc.nextLine();
-                    System.out.print("Numero de tarjetao: ");
+                    System.out.print("Numero de tarjeta: ");
                     String numTarjeta = sc.nextLine();
                     Partido p = aficionado.buscarPartido(partidos, codigo);
                     Compra compra = aficionado.comprar(p, zona, cantidad, numTarjeta);
-                    compras.add(compra);
+                    if (compra != null){
+                        compras.add(compra);
+                    }
                     break;
                 }
                 case 3:{                    
