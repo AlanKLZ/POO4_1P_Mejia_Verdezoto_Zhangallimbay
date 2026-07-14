@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.time.LocalDate; 
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.util.ArrayList; 
 
 public class Aficionado extends Usuario {
 

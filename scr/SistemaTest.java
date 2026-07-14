@@ -4,10 +4,12 @@ public class SistemaTest {
         Sistema sistema = new Sistema();
         Scanner sc = new Scanner(System.in);
         sistema.cargarUsuarios();
-        System.out.println("=======INICIAR SESION=======");
-        System.out.println("Ingrese su usuario y contraseña para iniciar sesión");
-        String usuario = sc.nextLine();
-        String contraseña = sc.nextLine();
-        sistema.iniciarSesion(usuario, contraseña); //funciona ej: cmendoza / mundial2026
+        sistema.cargarPartidos();
+        sistema.cargarKitCompra();
+        while (Sistema.sistemaActivo){
+            sistema.iniciarSesion();
+            //ejemplo aficionado: cmendoza / mundial2026
+            //ejemplo organizador lpereza / admin2026
+        }
     }
 }

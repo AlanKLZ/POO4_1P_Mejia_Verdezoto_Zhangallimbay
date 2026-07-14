@@ -66,16 +66,13 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "\n==========================================" +
-            "\n           INFORMACIÓN DE COMPRA" +
-            "\n==========================================" +
-            "\n Código de Compra : " + codigo +
-            "\n Código Referencia: " + codigoReferencia +
-            "\n Tipo de Compra   : " + tipoCompra +
-            "\n Fecha            : " + fechaCompra +
-            "\n Cantidad         : " + cantidad +
-            "\n Valor Pagado     : $" + String.format("%.2f", valorPagado) +
-            "\n Código Aficionado: " + codigoAficionado +
-            "\n==========================================";
+        return "° Compra:"+
+            "\n Código de compra    : " + codigo +
+            "\n Código de referencia: " + codigoReferencia +
+            "\n Tipo de compra      : " + tipoCompra +
+            "\n Fecha de compra     : " + fechaCompra +
+            "\n Cantidad            : " + cantidad +
+            "\n Valor Pagado        : $" + String.format("%.2f", valorPagado) +
+            "\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"; 
     }
 }
