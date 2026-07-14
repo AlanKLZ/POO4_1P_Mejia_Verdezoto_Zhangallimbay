@@ -7,7 +7,7 @@ public class Reporte {
     private int totalKits; 
     private double montoTotal; 
     private LocalDate fechaReporte; 
-
+//Constructor
     public Reporte(int totalCompras, int totalEntradas, int totalKits, double montoTotal){
         this.totalCompras = totalCompras; 
         this.totalEntradas = totalEntradas; 
@@ -15,7 +15,7 @@ public class Reporte {
         this.montoTotal = montoTotal; 
         this.fechaReporte = LocalDate.now(); 
     }
-
+//Getters y setters 
     public int getTotalCompras(){
         return totalCompras; 
     }

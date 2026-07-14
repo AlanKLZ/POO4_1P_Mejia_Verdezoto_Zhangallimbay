@@ -10,6 +10,8 @@ public class Compra {
     private double valorPagado;
     private String codigoAficionado;
 
+    //Getters y setters 
+
     public void setCodigo(String codigo){
         this.codigo = codigo;
     }
@@ -52,7 +54,7 @@ public class Compra {
     public String getCodigoAficionado(){
         return codigoAficionado;
     }
-
+    //Constructor 
     public Compra(TipoCompra tipoCompra, String codigoReferencia,  LocalDate fechaCompra, int cantidad, double valorPagado, String codigoAficionado){
         this.codigo = "C"+ String.format("%03d", contador);
         this.codigoReferencia = codigoReferencia;

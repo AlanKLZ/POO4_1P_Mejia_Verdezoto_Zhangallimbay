@@ -9,7 +9,7 @@ public abstract class Usuario{
     protected String contraseña;
     protected String correo;
     protected RolUsuario rol;
-
+//Constructor 
     public Usuario(String codigoUnico,String cedula,String nombres, String apellidos,String usuario,String contraseña,String correo,RolUsuario rol){
         this.codigoUnico = codigoUnico;
         this.cedula = cedula;
@@ -20,7 +20,7 @@ public abstract class Usuario{
         this.correo = correo;
         this.rol = rol;
     }
-
+//Getters y setters 
     public String getCodigoUnico(){
         return codigoUnico;
     }
@@ -70,7 +70,7 @@ public abstract class Usuario{
     public void setRolUsuario(RolUsuario rol){
         this.rol = rol;
     }
-
+//Metodo abstracto consultarEntradas porque será implementado diferente 
     public abstract void consultarEntradas(ArrayList<Compra> compras);
     
     @Override
