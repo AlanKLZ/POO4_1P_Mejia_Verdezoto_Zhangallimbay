@@ -4,14 +4,14 @@ public class Organizador extends Usuario{
     private String empresa; 
     private String cargo; 
 
-
+//Constructor 
     public Organizador(String codigoUnico,String cedula,String nombres, String apellidos,String usuario,String contraseña,String correo,RolUsuario rol, String empresa, String cargo){
         super(codigoUnico, cedula, nombres, apellidos, usuario, contraseña, correo, rol); 
         this.empresa = empresa; 
         this.cargo = cargo; 
     }
 
-
+//Getters 
     public String getEmpresa(){
         return empresa; 
     }
@@ -25,7 +25,7 @@ public class Organizador extends Usuario{
     public void setCargo(String cargo){
         this.cargo = cargo; 
     }
-
+//Sobrescritura del método consultarEntradas 
     @Override 
     public void consultarEntradas(ArrayList <Compra> compras){
         if (compras.isEmpty()){
@@ -37,7 +37,7 @@ public class Organizador extends Usuario{
             } 
         }
     }
-
+//Metodo de generarReporte 
     public Reporte generarReporte(ArrayList<Compra> compras){
         int totalCompras = compras.size(); 
         int totalEntradas = 0; 

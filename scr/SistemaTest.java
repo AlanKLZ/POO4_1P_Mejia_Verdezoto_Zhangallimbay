@@ -13,6 +13,7 @@ public class SistemaTest {
             //ejemplo aficionado: cmendoza / mundial2026
             //ejemplo organizador lpereza / admin2026
             //ejemplo para probar correo alazhang / POO4_1P
+            //andrverd|supervisor26
         }
         sc.close();
     }

@@ -7,7 +7,7 @@ public class KitCompra {
     private ArrayList<String> codigoPartidos = new ArrayList<>();
     private double precio;
     private int cantidadDisponible;
-
+//Constructor 
     public KitCompra(String codigo, String nombre, String descripcion, ArrayList<String> codigoPartidos, double precio, int cantidadDisponible){
         this.codigoKit = codigo;
         this.nombre = nombre;
@@ -17,7 +17,7 @@ public class KitCompra {
         this.cantidadDisponible = cantidadDisponible;
     }
 
-    //getters
+//Getters
     public String getCodigo() {
         return codigoKit;
     }
@@ -37,10 +37,11 @@ public class KitCompra {
         return cantidadDisponible;
     }
 
+    //Metodo de validarStock 
     public boolean validarStock(int cantidad){
         return cantidad>0 && cantidad <= cantidadDisponible;
     }
-
+    //Metodo de reducirStock 
     public void reducirStock(int cantidad){
         if (validarStock(cantidad)){
             cantidadDisponible -= cantidad;
