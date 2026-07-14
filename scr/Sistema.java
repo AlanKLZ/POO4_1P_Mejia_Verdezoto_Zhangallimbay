@@ -19,14 +19,14 @@ public class Sistema {
     private ArrayList<Compra> compras;
     public static boolean sesionIniciada;
     public static boolean sistemaActivo = true;
-
+//Constructor 
     public Sistema() {
         usuarios = new ArrayList<>();
         partidos = new ArrayList<>();
         kitsCompra = new ArrayList<>();
         compras = new ArrayList<>();
     }
-    
+//Metodo validadInicioSesion que compara el usuario y contraseña 
     public Usuario validadInicioSesion(String usuario, String contraseña) {
         for (Usuario u : usuarios) {
             if (u.getUsuario().equals(usuario) && u.getContraseña().equals(contraseña)) {
@@ -35,12 +35,13 @@ public class Sistema {
         }
         return null;
     }
+//Metodo cerrarSesion 
     public void cerrarSesion() {
         sesionIniciada = false;
         String mensaje = "\n Volviendo al inicio de sesion.\n";
         System.out.println(mensaje);
     }
-
+//Metodo iniciarSesion
     public void iniciarSesion() {
         System.out.println("\nSistema de Venta y Gestión de Entradas para el Mundial\n");
         System.out.println("=========== INICIO DE SESIÓN ========== ");        
@@ -63,7 +64,7 @@ public class Sistema {
         }
 
     }
-    
+//Metodo de mensajeDeVerificación 
     public void mensajeDeVerificacion(Usuario usuario){
         Scanner sc = new Scanner(System.in);
         String cierreSistema = "Saliendo del sistema...";
@@ -71,6 +72,7 @@ public class Sistema {
 
         //Sección para codigo que usa el Aficionado.
         if (usuario instanceof Aficionado){            
+            //Downcasting para acceder a metodos y atributos 
             Aficionado aficionado = (Aficionado) usuario;
             System.out.println("Bienvenid@, "+aficionado.getNombres()+" "+aficionado.getApellidos());
             System.out.println("Numero de celular registrado: "+ aficionado.getCelular());
@@ -88,6 +90,7 @@ public class Sistema {
         }
         //Seccion para el codigo que usa el Organizador.
         else if (usuario instanceof Organizador){
+            //Downcasting para acceder a metodos y atributos 
             Organizador organizador = (Organizador) usuario;
             System.out.println("Bienvenid@, "+organizador.getNombres()+" "+organizador.getApellidos());
             System.out.println("Empresa asignada: "+ organizador.getEmpresa());
@@ -103,6 +106,7 @@ public class Sistema {
             }
         }
     }
+    //Metodo selectorMenu
     public void selectorMenu(Usuario u){
         if(sistemaActivo){
             if (u instanceof Aficionado){
@@ -179,7 +183,7 @@ public class Sistema {
                         compras.add(compra);
                         String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
                         ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);
-                        //notificar(aficionado, compra, p, zona);
+                        notificar(aficionado, compra, p, zona);
                     }
                     break;
                 }  
@@ -201,7 +205,7 @@ public class Sistema {
                         compras.add(compra);
                         String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
                         ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);
-                        //notificar(aficionado, compra, kit);
+                        notificar(aficionado, compra, kitSeleccionado);
                     }
                     break;
                 }
@@ -217,7 +221,7 @@ public class Sistema {
             }
         }
     }
-    //Aqui debe mostrar los Kits disponibles
+    //Metodo para poder visualizar los Kits disponibles
     public void mostrarKitsDisponibles(ArrayList<KitCompra> kits, ArrayList<Partido> partidos , Aficionado a){
         System.out.println("===== KITS DISPONIBLES =====");
         for (KitCompra kit: kitsCompra){
@@ -233,7 +237,7 @@ public class Sistema {
         }
     }
 
-    //Metodo que se usara si el usuario es un organizador
+    //Metodo para mostrar menu si el usuario es un organizador
     public void mostrarMenuOrganizador(Usuario u) {  
         Organizador organizador = (Organizador) u;
         Scanner sc = new Scanner(System.in);
@@ -268,7 +272,7 @@ public class Sistema {
                 case 2:{                    
                     // lógica para generar reporte
                     Reporte reporte = organizador.generarReporte(compras);
-                    //notificar(organizador, reporte);
+                    notificar(organizador, reporte);
                     break;
                 }
                 case 3:{                    

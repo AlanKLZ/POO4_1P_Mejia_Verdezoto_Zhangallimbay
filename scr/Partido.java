@@ -16,7 +16,7 @@ public class Partido {
     private double precioVIP;
     private String fase; 
     
-    
+    //Constructor 
     public Partido(String codigo, String seleccionLocal, String seleccionVisitante, LocalDate fecha, String estadio,
             String ciudad, int capacidad, int entradasGeneral, int entradasPreferencial, int entradasVIP,
             double precioGeneral, double precioPreferencial, double precioVIP, String fase) {
@@ -35,7 +35,7 @@ public class Partido {
         this.precioVIP = precioVIP;
         this.fase = fase;
     }
-
+//Getters y setters 
     public String getCodigo() {
         return codigo;
     }
@@ -148,7 +148,7 @@ public class Partido {
     public void setPrecioVIP(double precioVIP) {
         this.precioVIP = precioVIP;
     }
-
+//Metodo de validarStock 
     public boolean validarStock(Zona zona, int cantidad){
         if (cantidad <= 0){
             return false; 
@@ -164,7 +164,8 @@ public class Partido {
             return false; 
             }
         }
-
+//Metodo actualizarDisponibilidad 
+//Se emplea el break porque el método no devuelve nada 
     public void actualizarDisponibilidad(Zona zona, int cantidad){
         if (!validarStock(zona, cantidad)){
             System.out.println("No hay stock suficiente"); 
@@ -184,6 +185,8 @@ public class Partido {
 
     }
 
+//Metodo obtenerPrecioZona
+//Se emplea un default porque el método obligatoriamente devuelve algo 
     public double obtenerPrecioZona(Zona zona){
         switch (zona) {
             case GENERAL:

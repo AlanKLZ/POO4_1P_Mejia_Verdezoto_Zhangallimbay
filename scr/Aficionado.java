@@ -7,6 +7,7 @@ public class Aficionado extends Usuario {
     private String celular;
     private String paisFavorito;
 
+    //Constructor 
     public Aficionado(String codigoUnico,
             String cedula,
             String nombres,
@@ -21,7 +22,7 @@ public class Aficionado extends Usuario {
         this.celular = celular;
         this.paisFavorito = paisFavorito;
     }
-
+    //Getters y setters 
     public String getCelular() {
         return celular;
     }
@@ -38,6 +39,7 @@ public class Aficionado extends Usuario {
         this.paisFavorito = paisFavorito;
     }
 
+    //Consultar partidos 
     public void consultarPartidos(ArrayList<Partido> partidos) {
         if (partidos.isEmpty()) {
             System.out.println("No hay partidos disponibles");
@@ -48,11 +50,11 @@ public class Aficionado extends Usuario {
             }
         }
     }
-
+    //Metodo de comprar entradas 
     public Compra comprar(Partido p,Zona zona) {
         Scanner sc = new Scanner(System.in);
 
-        // Pedir una zona válida
+        // Pedir en sistema una zona válida
         //Zona zona = validarZona();
         System.out.println("Elegió: "+zona);
         int cantidad = 0;
@@ -104,33 +106,10 @@ public class Aficionado extends Usuario {
 
         return compraRealizada;
     }
+    //Metodo de comprar kit de entradas 
 
     public Compra comprar(KitCompra kitSeleccionado) {
-
         Scanner sc = new Scanner(System.in);
-        //Va en sistema!!!!!!
-/*         System.out.println("===== KITS DISPONIBLES =====");
-        for (KitCompra kit: kitsCompra){
-            System.out.println(kit);
-            System.out.println("Disponibles: "+ kit.getCantidadDisponible()); 
-            System.out.println("Partidos incluidos: "); 
-            for(String codigoPartido: kit.getCodigoPartidos()){
-                Partido partido= buscarPartido(partidos, codigoPartido); 
-                if(partido != null){
-                    System.out.println(partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
-                }
-            }
-        } */
-/*         KitCompra kitSeleccionado = null; 
-        while(kitSeleccionado == null){
-            System.out.print("Ingrese el código del kit: ");
-            String codigo = sc.nextLine(); 
-            kitSeleccionado = buscarKitCompra(kitsCompra, codigo); 
-            if (kitSeleccionado == null){
-                System.out.println("Ingrese un código de kit válido");
-            }
-        } */
-        
         int cantidad = 0;
 
         // Pedir una cantidad válida
@@ -178,9 +157,7 @@ public class Aficionado extends Usuario {
         );
     }
 
-        
-
-    //Lo muevo aqui, porque se usa unicamente aca
+    //Metodo de validación de zona 
     public Zona validarZona() {
         Scanner sc = new Scanner(System.in);
         int i = 0;
@@ -213,7 +190,7 @@ public class Aficionado extends Usuario {
         return null;
     }
 
-    //Lo borré sin querer
+    //Metodos para buscar partidos y kits apartir de un String 
     public Partido buscarPartido(ArrayList<Partido> partidos, String codigo) {
         for (Partido p : partidos) {
             if (p.getCodigo().equals(codigo.toUpperCase())) {
@@ -231,6 +208,7 @@ public class Aficionado extends Usuario {
         }
         return null;
     }
+    //Metodo de consultar entradas 
 
     @Override
     public void consultarEntradas(ArrayList<Compra> compras) {
