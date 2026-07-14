@@ -1,6 +1,6 @@
-import java.util.Scanner;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Aficionado extends Usuario {
 
@@ -49,12 +49,12 @@ public class Aficionado extends Usuario {
         }
     }
 
-    public Compra comprar(Partido p) {
+    public Compra comprar(Partido p,Zona zona) {
         Scanner sc = new Scanner(System.in);
 
         // Pedir una zona válida
-        Zona zona = validarZona();
-
+        //Zona zona = validarZona();
+        System.out.println("Elegió: "+zona);
         int cantidad = 0;
 
         // Pedir una cantidad válida
@@ -167,6 +167,14 @@ public class Aficionado extends Usuario {
                 i = sc.nextInt();
                 sc.nextLine();
                 if (i >= 1 && i <= 3) {
+                    switch (i) {
+                        case 1:
+                            return Zona.GENERAL;
+                        case 2:
+                            return Zona.PREFERENCIAL;
+                        case 3:
+                            return Zona.VIP;
+            }
                     break;
                 } else {
                     System.out.println("\nOpción inválida.\n");
@@ -174,15 +182,7 @@ public class Aficionado extends Usuario {
             } else {
                 System.out.println("\nError: Debe ingresar in numero.\n");
                 sc.nextLine();
-            }
-            switch (i) {
-                case 1:
-                    return Zona.GENERAL;
-                case 2:
-                    return Zona.PREFERENCIAL;
-                case 3:
-                    return Zona.VIP;
-            }
+            }            
         }
         return null;
     }

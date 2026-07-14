@@ -161,6 +161,7 @@ public class Sistema {
                     String respuesta = sc.nextLine();
                     if (respuesta.equalsIgnoreCase("E")){
                         System.out.println("Escriba los datos para proceder con el pago:");
+                        Zona zona = aficionado.validarZona();
                         Partido p = null;
                         while (p == null) {
                             System.out.print("Código de partido: ");
@@ -170,12 +171,13 @@ public class Sistema {
                                 System.out.println("Ingrese un código de partido válido.");
                             }
                         }
-                        Compra compra = aficionado.comprar(p);
+                        Compra compra = aficionado.comprar(p,zona);
                         if (compra != null) {
                             compras.add(compra);
                         }
                         String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
                         ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);
+                        notificar(aficionado, compra, p, zona);
                     }       
                      else if (respuesta.equalsIgnoreCase("K")){
                         System.out.println("Escriba los datos para proceder con el pago:");

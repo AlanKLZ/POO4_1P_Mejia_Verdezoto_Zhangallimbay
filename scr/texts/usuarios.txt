@@ -10,3 +10,4 @@ A008|0989012345|Camila|Perez|cperez|estadios2026|camila.perez@email.com|A
 O001|0990123456|Laura|Perez|lperez|admin2026|laura.perez@fifa.com|O
 O002|0901234567|Andres|Morales|amorales|organizador1|andres.morales@fifa.com|O
 O003|0911122233|Daniela|Rojas|drojas|supervisor26|daniela.rojas@fifa.com|O
+A009|XXXXXXXXXX|Alan|Zhang|alazhang|POO4_1P|alanzhangallimbay23@gmail.com|A
