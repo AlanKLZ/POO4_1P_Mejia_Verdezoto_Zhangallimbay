@@ -174,6 +174,8 @@ public class Sistema {
                         if (compra != null) {
                             compras.add(compra);
                         }
+                        String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
+                        ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);
                     }       
                      else if (respuesta.equalsIgnoreCase("K")){
                         System.out.println("Escriba los datos para proceder con el pago:");
@@ -190,7 +192,8 @@ public class Sistema {
                         if (compra != null) {
                             compras.add(compra);
                         }
-                    }
+                        String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
+                        ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);                    }
                 
                     break;
                 }

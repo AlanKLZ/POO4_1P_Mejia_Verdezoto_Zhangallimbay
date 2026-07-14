@@ -6,6 +6,8 @@ public class SistemaTest {
         sistema.cargarUsuarios();
         sistema.cargarPartidos();
         sistema.cargarKitCompra();
+        ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", "CódigoCompra|Tipo|CódigoReferencia|FechaCompra|Cantidad|ValorPagado|CódigoAficionado");
+
         while (Sistema.sistemaActivo){
             sistema.iniciarSesion();
             //ejemplo aficionado: cmendoza / mundial2026
