@@ -154,20 +154,44 @@ public class Sistema {
                 }
                 case 2:{                    
                     // Lógica para comprar entradas
-                    System.out.println("Escriba los datos para proceder con el pago:");
-                    Partido p = null;
-                    while (p == null) {
-                        System.out.print("Código de partido: ");
-                        String codigo = sc.nextLine();
-                        p = aficionado.buscarPartido(partidos, codigo);
-                        if (p == null) {
-                            System.out.println("Ingrese un código de partido válido.");
+                    System.out.println("\n¿Que desea comprar?");
+                    System.out.println("(E) Entrada");
+                    System.out.println("(K) Kit");
+                    //System.out.println("(V) Volver"); 
+                    String respuesta = sc.nextLine();
+                    if (respuesta.equalsIgnoreCase("E")){
+                        System.out.println("Escriba los datos para proceder con el pago:");
+                        Partido p = null;
+                        while (p == null) {
+                            System.out.print("Código de partido: ");
+                            String codigo = sc.nextLine();
+                            p = aficionado.buscarPartido(partidos, codigo);
+                            if (p == null) {
+                                System.out.println("Ingrese un código de partido válido.");
+                            }
+                        }
+                        Compra compra = aficionado.comprar(p);
+                        if (compra != null) {
+                            compras.add(compra);
+                        }
+                    }       
+                     else if (respuesta.equalsIgnoreCase("K")){
+                        System.out.println("Escriba los datos para proceder con el pago:");
+                        KitCompra k = null;
+                        while (k == null) {
+                            System.out.print("Código deel kit: ");
+                            String codigo = sc.nextLine();
+                            k = aficionado.buscarKitCompra(kitsCompra, codigo);
+                            if (k == null) {
+                                System.out.println("Ingrese un código de partido válido.");
+                            }
+                        }
+                        Compra compra = aficionado.comprar(k);
+                        if (compra != null) {
+                            compras.add(compra);
                         }
                     }
-/*                     Compra compra = aficionado.comprar(p);  Descomentar luego que cambien el metodo comprar en lo de aficionado pls
-                    if (compra != null) {
-                        compras.add(compra);
-                    } */
+                
                     break;
                 }
                 case 3:{                    
