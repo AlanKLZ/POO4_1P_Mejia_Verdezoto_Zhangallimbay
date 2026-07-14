@@ -50,6 +50,8 @@ public class Aficionado extends Usuario {
             }
         }
     }
+
+    public Compra comprar(Partido p,Zona zona, Scanner sc) {
     //Metodo de comprar entradas 
     public Compra comprar(Partido p,Zona zona) {
         Scanner sc = new Scanner(System.in);
@@ -108,6 +110,31 @@ public class Aficionado extends Usuario {
     }
     //Metodo de comprar kit de entradas 
 
+    public Compra comprar(KitCompra kitSeleccionado, Scanner sc) {
+
+        //Va en sistema!!!!!!
+/*         System.out.println("===== KITS DISPONIBLES =====");
+        for (KitCompra kit: kitsCompra){
+            System.out.println(kit);
+            System.out.println("Disponibles: "+ kit.getCantidadDisponible()); 
+            System.out.println("Partidos incluidos: "); 
+            for(String codigoPartido: kit.getCodigoPartidos()){
+                Partido partido= buscarPartido(partidos, codigoPartido); 
+                if(partido != null){
+                    System.out.println(partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
+                }
+            }
+        } */
+/*         KitCompra kitSeleccionado = null; 
+        while(kitSeleccionado == null){
+            System.out.print("Ingrese el código del kit: ");
+            String codigo = sc.nextLine(); 
+            kitSeleccionado = buscarKitCompra(kitsCompra, codigo); 
+            if (kitSeleccionado == null){
+                System.out.println("Ingrese un código de kit válido");
+            }
+        } */
+        
     public Compra comprar(KitCompra kitSeleccionado) {
         Scanner sc = new Scanner(System.in);
         int cantidad = 0;
@@ -157,6 +184,11 @@ public class Aficionado extends Usuario {
         );
     }
 
+        
+
+    //Lo muevo aqui, porque se usa unicamente aca
+    public Zona validarZona(Scanner sc) {
+        
     //Metodo de validación de zona 
     public Zona validarZona() {
         Scanner sc = new Scanner(System.in);

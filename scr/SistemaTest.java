@@ -9,11 +9,12 @@ public class SistemaTest {
         ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", "CódigoCompra|CódigoReferencia|Tipo|FechaCompra|Cantidad|ValorPagado|CódigoAficionado");
 
         while (Sistema.sistemaActivo){
-            sistema.iniciarSesion();
+            sistema.iniciarSesion(sc);
             //ejemplo aficionado: cmendoza / mundial2026
             //ejemplo organizador lpereza / admin2026
             //ejemplo para probar correo alazhang / POO4_1P
             //andrverd|supervisor26
         }
+        sc.close();
     }
 }
