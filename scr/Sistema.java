@@ -153,19 +153,21 @@ public class Sistema {
                     break;
                 }
                 case 2:{                    
-                    // lógica para comprar entradas
-                    System.out.println("Escriba los datos para proceder con el pago: ");
-                    System.out.print("Codigo de partido: ");
-                    String codigo = sc.nextLine();
-                    Zona zona = validarZona();
-                    System.out.print("Cantidad: ");
-                    int cantidad = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Numero de tarjetao: ");
-                    String numTarjeta = sc.nextLine();
-                    Partido p = aficionado.buscarPartido(partidos, codigo);
-                    Compra compra = aficionado.comprar(p, zona, cantidad, numTarjeta);
-                    compras.add(compra);
+                    // Lógica para comprar entradas
+                    System.out.println("Escriba los datos para proceder con el pago:");
+                    Partido p = null;
+                    while (p == null) {
+                        System.out.print("Código de partido: ");
+                        String codigo = sc.nextLine();
+                        p = aficionado.buscarPartido(partidos, codigo);
+                        if (p == null) {
+                            System.out.println("Ingrese un código de partido válido.");
+                        }
+                    }
+                    Compra compra = aficionado.comprar(p);
+                    if (compra != null) {
+                        compras.add(compra);
+                    }
                     break;
                 }
                 case 3:{                    
