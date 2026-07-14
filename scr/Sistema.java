@@ -154,54 +154,64 @@ public class Sistema {
                 }
                 case 2:{                    
                     // Lógica para comprar entradas
-                    System.out.println("\n¿Que desea comprar?");
-                    System.out.println("(E) Entrada");
-                    System.out.println("(K) Kit");
-                    //System.out.println("(V) Volver"); 
-                    String respuesta = sc.nextLine();
-                    if (respuesta.equalsIgnoreCase("E")){
-                        System.out.println("Escriba los datos para proceder con el pago:");
-                        Zona zona = aficionado.validarZona();
-                        Partido p = null;
-                        while (p == null) {
-                            System.out.print("Código de partido: ");
-                            String codigo = sc.nextLine();
-                            p = aficionado.buscarPartido(partidos, codigo);
-                            if (p == null) {
-                                System.out.println("Ingrese un código de partido válido.");
-                            }
+                    System.out.println("Escriba los datos para proceder con el pago:");
+                    Zona zona = aficionado.validarZona();
+                    Partido p = null;
+                    boolean regresar = false;
+                    while (p == null) {
+                        System.out.print("Código de partido: ");
+                        String codigo = sc.nextLine();
+                        if (codigo.equalsIgnoreCase("V")){
+                            regresar = true;
+                            System.out.println("\nVolviendo al menú...\n");
+                            break;
                         }
-                        Compra compra = aficionado.comprar(p,zona);
-                        if (compra != null) {
-                            compras.add(compra);
+                        p = aficionado.buscarPartido(partidos, codigo);
+                        if (p == null) {
+                            System.out.println("Ingrese un código de partido válido. Pulse (V) para regresar.");
                         }
+                    }
+                    if (regresar){
+                        break;
+                    }
+                    Compra compra = aficionado.comprar(p,zona);
+                    if (compra != null) {
+                        compras.add(compra);
                         String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
                         ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);
-                        notificar(aficionado, compra, p, zona);
-                    }       
-                     else if (respuesta.equalsIgnoreCase("K")){
-                        System.out.println("Escriba los datos para proceder con el pago:");
+                        //notificar(aficionado, compra, p, zona);
+                    }
+                    break;
+                }  
+                             
+                case 3:{                    
+                    // lógica para comprar kitcompras
+                    //consultarKits(aficionado);
+                    System.out.println("Escriba los datos para proceder con el pago:");
                         KitCompra k = null;
+                        boolean regresar = false;
                         while (k == null) {
                             System.out.print("Código deel kit: ");
                             String codigo = sc.nextLine();
                             k = aficionado.buscarKitCompra(kitsCompra, codigo);
+                            if (codigo.equalsIgnoreCase("V")){
+                                regresar = true;
+                                System.out.println("\nVolviendo al menú...\n");
+                                break;
+                                }
                             if (k == null) {
-                                System.out.println("Ingrese un código de partido válido.");
+                                System.out.println("Ingrese un código de partido válido. Presione (V) si desea regresar");
                             }
+                        }
+                        if (regresar){                            
+                            break;
                         }
                         Compra compra = aficionado.comprar(k);
                         if (compra != null) {
                             compras.add(compra);
+                            String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
+                            ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);
                         }
-                        String linea = compra.getCodigo() + "|" + compra.getCodigoReferencia() + "|" + compra.getTipoCompra() + "|" + compra.getFechaCompra() + "|" + compra.getCantidad() + "|" + compra.getValorPagado() + "|" + compra.getCodigoAficionado();
-                        ManejoArchivos.EscribirArchivo("scr/texts/compras.txt", linea);                    }
-                
-                    break;
-                }
-                case 3:{                    
-                    // lógica para consultar kitcompras
-                    consultarKits(aficionado);
                     break;
                 }
                 case 4:{                    
