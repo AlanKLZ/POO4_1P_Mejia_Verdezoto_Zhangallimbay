@@ -267,7 +267,8 @@ public class Sistema {
                 }
                 case 2:{                    
                     // lógica para generar reporte
-                    organizador.generarReporte(compras);
+                    Reporte reporte = organizador.generarReporte(compras);
+                    //notificar(organizador, reporte);
                     break;
                 }
                 case 3:{                    

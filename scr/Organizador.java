@@ -38,7 +38,7 @@ public class Organizador extends Usuario{
         }
     }
 
-    public void generarReporte(ArrayList<Compra> compras){
+    public Reporte generarReporte(ArrayList<Compra> compras){
         int totalCompras = compras.size(); 
         int totalEntradas = 0; 
         int totalKits = 0; 
@@ -54,6 +54,7 @@ public class Organizador extends Usuario{
         Reporte reporte = new Reporte(totalCompras, totalEntradas, totalKits, montoTotal); 
         System.out.println("====GENERAR REPORTE DE VENTAS====="); 
         System.out.println(reporte.toString());
+        return reporte;
     }
 
 }
