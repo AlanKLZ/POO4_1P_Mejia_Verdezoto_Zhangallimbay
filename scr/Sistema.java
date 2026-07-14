@@ -163,8 +163,10 @@ public class Sistema {
                     Partido p = null;
                     boolean regresar = false;
                     while (p == null) {
+                        System.out.println("Si no ha consultado los partidos, ingrese V para regresar: "); 
                         System.out.print("Código de partido: ");
                         String codigo = sc.nextLine();
+
                         if (codigo.equalsIgnoreCase("V")){
                             regresar = true;
                             System.out.println("\nVolviendo al menú...\n");
@@ -172,7 +174,7 @@ public class Sistema {
                         }
                         p = aficionado.buscarPartido(partidos, codigo);
                         if (p == null) {
-                            System.out.println("Ingrese un código de partido válido o escriba (V) para regresar.");
+                            System.out.println("Ingrese un código de partido válido");
                         }
                     }
                     if (regresar){
