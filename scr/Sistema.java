@@ -13,7 +13,7 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.Transport; 
 
 public class Sistema {
-    private ArrayList<Usuario> usuarios;
+    private ArrayList<Usuario> usuarios; 
     private ArrayList<Partido> partidos;
     private ArrayList<KitCompra> kitsCompra;
     private ArrayList<Compra> compras;
@@ -238,7 +238,7 @@ public class Sistema {
             for(String codigoPartido: kit.getCodigoPartidos()){
                 Partido partido= a.buscarPartido(partidos, codigoPartido); 
                 if(partido != null){
-                    System.out.println("• " + partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
+                    System.out.println("- " + partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
                     
                 }
             }
