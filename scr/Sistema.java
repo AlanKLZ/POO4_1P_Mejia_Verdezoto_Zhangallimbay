@@ -13,7 +13,7 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.Transport; 
 
 public class Sistema {
-    private ArrayList<Usuario> usuarios;
+    private ArrayList<Usuario> usuarios; 
     private ArrayList<Partido> partidos;
     private ArrayList<KitCompra> kitsCompra;
     private ArrayList<Compra> compras;
@@ -113,10 +113,12 @@ public class Sistema {
     public void selectorMenu(Usuario u, Scanner sc ){
         if(sistemaActivo){
             if (u instanceof Aficionado){
-                mostrarMenuAficionado(u, sc);
+                Aficionado af = (Aficionado) u;
+                mostrarMenu(af, sc);
             }
             else if (u instanceof Organizador){
-                mostrarMenuOrganizador(u, sc);
+                Organizador org = (Organizador) u;
+                mostrarMenu(org, sc);
             }
             else {
                 System.out.println("Usuario no registrado");
@@ -124,9 +126,7 @@ public class Sistema {
         }
     }
     //Metodo que se usara si el usuario es un aficionado
-    public void mostrarMenuAficionado(Usuario usuario, Scanner sc) {  
-        Aficionado aficionado = (Aficionado) usuario;
-        
+    public void mostrarMenu(Aficionado aficionado, Scanner sc) {  
         while (sesionIniciada) {
             int opcion = 0;
             while(true){
@@ -228,24 +228,28 @@ public class Sistema {
     }
     //Metodo para poder visualizar los Kits disponibles
     public void mostrarKitsDisponibles(ArrayList<KitCompra> kits, ArrayList<Partido> partidos , Aficionado a){
-        System.out.println("===== KITS DISPONIBLES =====");
+        System.out.println("\n===== KITS DISPONIBLES =====\n");
         for (KitCompra kit: kitsCompra){
+            System.out.println("-------------------------------------");
             System.out.println(kit);
             System.out.println("Disponibles: "+ kit.getCantidadDisponible()); 
-            System.out.println("Partidos incluidos: "); 
+            
+            System.out.println("Partidos incluidos:"); 
             for(String codigoPartido: kit.getCodigoPartidos()){
                 Partido partido= a.buscarPartido(partidos, codigoPartido); 
                 if(partido != null){
-                    System.out.println(partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
+                    System.out.println("- " + partido.getSeleccionLocal() + " vs "+ partido.getSeleccionVisitante()); 
+                    
                 }
             }
+            System.out.println("-------------------------------------\n");
+
         }
     }
 
       
     //Metodo para mostrar menu si el usuario es un organizador
-    public void mostrarMenuOrganizador(Usuario u, Scanner sc) {  
-        Organizador organizador = (Organizador) u;
+    public void mostrarMenu(Organizador organizador, Scanner sc) {  
         int opcion = 0;
         while (sesionIniciada) {            
             while(true){
